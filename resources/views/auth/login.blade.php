@@ -1,8 +1,8 @@
-<x-guest-layout>
-    <x-auth-card>
+<x-guest-layout >
+    <x-auth-card bg>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <img src="{{ asset('assets/Artboard 1.png') }}" alt="logo" class="h-16">
             </a>
         </x-slot>
 
@@ -50,6 +50,14 @@
                 <x-button class="ml-3">
                     {{ __('Log in') }}
                 </x-button>
+                
+            </div>
+            <div class="flex items-center justify-end mt-4">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                    {{ __(' registere') }}
+                </a>
+
+               
             </div>
         </form>
     </x-auth-card>

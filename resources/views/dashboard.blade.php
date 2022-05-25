@@ -1,17 +1,36 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+@section('title', 'Dashboard')
+
+@section('content')
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">Dashboard</div>
+
+				<div class="panel-body">
+					
+					<p>You are logged in!</p>
+
+					@if (Auth::user()->is_admin)
+						<p>
+							See all <a href="{{ url('admin/tickets') }}">tickets</a>
+						</p>
+						<p>
+							Add <a href="{{ url('/admin/add_category') }}">categories</a>
+						<p>
+							See all <a href="{{ url('/admin/users') }}">Users</a>
+						</p>
+						</p>
+					@else
+						<p>
+							See all your <a href="{{ url('my_tickets') }}">tickets</a> or <a href="{{ route('newticket') }}">open new ticket</a>
+						</p>
+					@endif
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+@endsection
